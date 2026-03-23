@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.container {
+  max-width: 500px;
+  margin: 60px auto;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+input, textarea, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+}
+
+button {
+  background: #00f5a0;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 12px;
+}

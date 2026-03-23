@@ -1,0 +1,52 @@
+<div class="container">
+  <h2>Your Medicines</h2>
+
+  <input id="name" placeholder="Medicine Name">
+  <input id="time" type="time">
+  <textarea id="reason" placeholder="Reason"></textarea>
+  <button onclick="addMedicine()">Add</button>
+
+  <div id="list"></div>
+
+  <a href="summary.html"><button>Daily Summary</button></a>
+</div>
+
+<script>
+function load(){
+  fetch("/api/medicines")
+  .then(r=>r.json())
+  .then(data=>{
+    list.innerHTML="";
+    data.forEach(m=>{
+      list.innerHTML+=`
+        <div class="card">
+          <b>${m.name}</b><br>
+          Time: ${m.time}<br>
+          Reason: ${m.reason}<br>
+          Status: ${m.taken ? "✅ Taken" : "❌ Missed"}
+          <button onclick="markTaken('${m.name}')">Mark Taken</button>
+        </div>
+      `;
+    });
+  });
+}
+
+function addMedicine(){
+  fetch("/api/medicines",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      name:name.value,
+      time:time.value,
+      reason:reason.value
+    })
+  }).then(load);
+}
+
+function markTaken(name){
+  fetch("/api/taken/"+name,{method:"POST"})
+  .then(load);
+}
+
+load();
+</script>

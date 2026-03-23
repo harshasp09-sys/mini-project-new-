@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Daily Summary</h2>
+  <div id="summary"></div>
+</div>
+
+<script>
+fetch("/api/medicines")
+.then(r=>r.json())
+.then(data=>{
+  let taken = data.filter(m=>m.taken).length;
+  let missed = data.length - taken;
+
+  summary.innerHTML=`
+    <div class="card">Total Medicines: ${data.length}</div>
+    <div class="card">Taken: ${taken}</div>
+    <div class="card">Missed: ${missed}</div>
+  `;
+});
+</script>

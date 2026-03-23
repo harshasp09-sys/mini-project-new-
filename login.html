@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
+
+<script>
+function login(){
+  fetch("/api/login",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      email:email.value,
+      password:password.value
+    })
+  }).then(r=>r.json())
+    .then(data=>{
+      if(data.success){
+        window.location="dashboard.html";
+      }else{
+        alert("Invalid credentials");
+      }
+    });
+}
+</script>
