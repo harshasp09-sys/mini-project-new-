@@ -1,0 +1,14 @@
+{
+  "name": "medicine-reminder",
+  "version": "1.0.0",
+  "description": "Medicine Reminder App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
